@@ -1,0 +1,189 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+\setbeamertemplate{footline}[page number]
+\setbeamertemplate{navigation symbols}{}
+% To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{braket}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Shooting method for solving boundary value problems} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Shubham Raghuvanshi \\Harish Chandra Research Institute } % Your name
+
+
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+\begin{frame}
+	\frametitle{Solution of initial value problems}
+
+	\begin{itemize}
+		
+		\item An m'th order ordinary differential equation of the form 
+		
+		\begin{equation}
+		\frac{d^m y(t)}{d t^m} = f \left(t, y(t), \frac{d y(t)}{d t}, \frac{d^2 y(t)}{d t^2},...., \frac{d^{m-1} y(t)}{d t^{m-1}}      \right)
+		\end{equation}
+			
+		can be converted to a system of 'm' first order differential equations 
+
+		\begin{equation}
+		\frac{d y^{(n-1)}(t)}{dt} = y^{(n)}(t)  \text{     ,    } m \ge n \ge 1 		
+		\end{equation}
+
+by defining 'm+1' new variables $y^{(n)}(t)$,   $ 0 \le n \le m $ such that  
+		
+	\begin{equation}
+	y^{(0)}(t) = y(t)
+	\end{equation}
+	\begin{equation}
+	y^{(m)}(t) = f(t, y^{(0)}, y^{(1)}, y^{(2)},...., y^{(m-1)}   )
+	\end{equation}
+	
+Which can be uniquely solved given 'm' initial conditions of the form 
+
+\begin{equation}
+     y^{(n)}(t_0) = a_n  \text{     ,    }  0 \le n \le m-1
+\end{equation}
+
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Methods of numerically solving IVP}
+	
+	Following are some of the well known methods for numerically solving IVP of the form
+	
+	\begin{equation}
+	 \frac{d y}{dx} = f(x,y)
+	\end{equation} 
+	
+	\begin{itemize}
+		\item Euler's explicit and implicit method (Taylor series method of order 1) 
+		\begin{eqnarray}
+			y_{n+1} = y_{n} + \Delta x f(x_{n}, y_{n})\\
+			y_{n+1} = y_{n} + \Delta x f(x_{n+1}, y_{n+1})\\
+			y_{n+1} = y_{n} + \frac{\Delta x}{2} \left(  f(x_{n+1}, y_{n+1}) + f(x_{n}, y_{n})\right)
+		\end{eqnarray}
+		\item Higher-order Taylor series methods
+		\item $N^{th}$ order Runge-Kutta (RKN) methods.
+		\begin{eqnarray}
+		y_{n+1} = y_n +  \sum_{i=1}^{N}  w_i k_i\text{,      }  k_i  = h_n f \left( x_n + \alpha_i h_n, y_n + \sum_{j=1}^{i-1} \beta_{ij}k_j  \right)   
+		\end{eqnarray}
+		\item Predictor corrector methods
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	Consider the IVP
+
+	\begin{eqnarray*}
+     y'' = -y +1 \text{,             } y(0) =1, y'(0) =1 \\
+     y(x)  = 1 + sin(x)  
+	\end{eqnarray*}	
+	
+\end{frame}
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
