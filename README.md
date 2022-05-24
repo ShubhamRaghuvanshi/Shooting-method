@@ -1,6 +1,8 @@
 # Shooting-method
-The code can be used to numerically solve n'th order Ordinary differential equation and boundary value problems. Using RK1, RK2, RK4 
-explicit, implicit and predictor corrector schemes.
+The code can be used to numerically solve n'th order Ordinary differential equation using RK1, RK2, RK4 
+explicit, implicit and predictor corrector schemes. It can also be used to solve boundary value  
+and eigen value problems using shooting method. 
+
 
 Some examples are included 
 (1) Kepler motion.
