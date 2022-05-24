@@ -4,5 +4,6 @@ explicit, implicit and predictor corrector schemes.
 
 Some examples are included 
 (1) Kepler motion.
-(2) Quantum Harmonic Oscillator Boundary Value Problem.
+(2) Particle in a box Boundary Value Problem.
+(3) Quantum Harmonic Oscillator Boundary Value Problem.
 
